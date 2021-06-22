@@ -1,13 +1,20 @@
 import React from 'react'
 
-const SiteTile = (props) =>{
-  //category will need to be added
-  const{ id, name, url} = props.site
+const SiteTile = (props) => {
+  const { id, name, url, imgUrl, category } = props.site
 
-  return(
-    <h1>Hello</h1>
+  return (
+    <div>
+      <div>
+        <img src={imgUrl}></img>
+      </div>
+      <div>
+        <h3>{name}</h3>
+        <a href={url}>Visit the Site</a>
+        <p>{category.name}</p>
+      </div>
+    </div>
   )
 }
-
 
 export default SiteTile

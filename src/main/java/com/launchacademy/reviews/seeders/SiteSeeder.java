@@ -49,7 +49,7 @@ public class SiteSeeder {
       Site okcupid = new Site();
       okcupid.setName("okcupid");
       okcupid.setUrl("https://www.okcupid.com");
-      okcupid.setUrl("https://play-lh.googleusercontent.com/rPK95q0LVhsY-XNtQ980Qwl_j_i4A59w1mJ1turh5WCVoLY9gjxCuV3ekZCu3J5fUns=s360");
+      okcupid.setImgUrl("https://i.imgur.com/kt51xbF.png");
       okcupid.setCategory(general);
       sitesList.add(okcupid);
 
@@ -84,7 +84,7 @@ public class SiteSeeder {
       Site ourTime = new Site();
       ourTime.setName("Our Time");
       ourTime.setUrl("https://www.ourtime.com/");
-      ourTime.setImgUrl("https://play-lh.googleusercontent.com/Nap6mdN2jWPPtVPVIsnp2pkIvtf16di7G4cemQam4tQMm-aPpiCb4c7h6Byojxz2WIY=s360\")");
+      ourTime.setImgUrl("https://i.imgur.com/zGXnLRC.jpg");
       ourTime.setCategory(goldenYears);
       sitesList.add(ourTime);
 
