@@ -34,9 +34,8 @@ public class Site {
   @Column(name = "url" , nullable = false)
   private String url;
 
-  //@ManyToOne
-  //@JoinColumn(name="category_id", nullable=false)
-  //make sure the category bean calls it sites
-  //@JsonIgnoreProperties("sites")
-  //private Category category;
+  @ManyToOne
+  @JoinColumn(name="category_id", nullable=false)
+  @JsonIgnoreProperties("sites")
+  private Category category;
 }

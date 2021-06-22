@@ -1,6 +1,8 @@
 package com.launchacademy.reviews.seeders;
 
 import com.launchacademy.reviews.models.Site;
+import com.launchacademy.reviews.models.Category;
+import com.launchacademy.reviews.services.CategoriesService;
 import com.launchacademy.reviews.services.SiteService;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,19 +12,30 @@ import org.springframework.stereotype.Component;
 @Component
 public class SiteSeeder {
 private SiteService siteService;
+private CategoriesService categoriesService;
 
-@Autowired
-  public SiteSeeder(SiteService siteService) {
+  public SiteSeeder(SiteService siteService,
+      CategoriesService categoriesService) {
     this.siteService = siteService;
+    this.categoriesService = categoriesService;
   }
+
+  @Autowired
+
 
   public void seed(){
   List<Site> sitesList = new ArrayList<>();
 
+//    category1.setName("LGBTQIA+");
+//    category2.setName("Golden Years");
+//    category3.setName("Parents");
+//    category4.setName("Location");
+//    category5.setName("General");
+
   Site bumble = new Site();
   bumble.setName("Bumble");
   bumble.setUrl("https://bumble.com");
-  //general category
+  bumble.setCategory(categoriesService.findByName("General"));
   sitesList.add(bumble);
 
   Site match = new Site();

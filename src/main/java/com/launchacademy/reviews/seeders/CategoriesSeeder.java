@@ -21,14 +21,17 @@ public class CategoriesSeeder {
       Category category2 = new Category();
       Category category3 = new Category();
       Category category4 = new Category();
+      Category category5 = new Category();
       category1.setName("LGBTQIA+");
       category2.setName("Golden Years");
       category3.setName("Parents");
       category4.setName("Location");
+      category5.setName("General");
       categoriesService.save(category1);
       categoriesService.save(category2);
       categoriesService.save(category3);
       categoriesService.save(category4);
+      categoriesService.save(category5);
     }
   }
 }
