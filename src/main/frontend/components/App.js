@@ -5,6 +5,7 @@ import $ from "jquery";
 import { Route, BrowserRouter } from "react-router-dom"
 
 import SitesIndex from "./SitesIndex";
+import SiteShow from "./SiteShow"
 
 const App = (props) => {
   useEffect(() => {
@@ -14,7 +15,10 @@ const App = (props) => {
   return (
     <div>
       <BrowserRouter>
-        <Route exact path="/" component={SitesIndex} />
+        <Switch>
+          <Route exact path="/" component={SitesIndex} />
+          <Route exact path="/:id" component={SiteShow} />
+        </Switch>
       </BrowserRouter>
     </div>
   );
