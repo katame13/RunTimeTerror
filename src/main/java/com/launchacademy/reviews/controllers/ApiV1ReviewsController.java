@@ -14,27 +14,29 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api/v1/reviews")
 public class ApiV1ReviewsController {
- private ReviewService reviewService;
- private CategoriesService categoriesService;
 
- @Autowired
+  private ReviewService reviewService;
+  private CategoriesService categoriesService;
+
+  @Autowired
   public ApiV1ReviewsController(ReviewService reviewService,
       CategoriesService categoriesService) {
     this.reviewService = reviewService;
     this.categoriesService = categoriesService;
   }
-  @PostMapping
-  public Map<String, Review> createReview(@RequestBody Map<String,String> newReview){
-   Review review = new Review();
-   Map<String, Review> persistedReview = new HashMap<>();
-   review.setUserName(newReview.get("name"));
-   review.setRating(Integer.valueOf(newReview.get("rating")));
-   review.setReview(newReview.get("review"));
-   review.setLongestRelationship(Integer.valueOf(newReview.get("longestRelationship")));
-   reviewService.save(review);
-   persistedReview.put("review",review);
 
-   return persistedReview;
+  @PostMapping
+  public Map<String, Review> createReview(@RequestBody Map<String, String> newReview) {
+    Review review = new Review();
+    Map<String, Review> persistedReview = new HashMap<>();
+    review.setUserName(newReview.get("name"));
+    review.setRating(Integer.valueOf(newReview.get("rating")));
+    review.setReview(newReview.get("review"));
+    review.setLongestRelationship(Integer.valueOf(newReview.get("longestRelationship")));
+    reviewService.save(review);
+    persistedReview.put("review", review);
+
+    return persistedReview;
   }
 
 }
