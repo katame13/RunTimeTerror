@@ -37,8 +37,11 @@ public class Review {
   @Column(name = "review")
   private String review;
 
-  @ManyToOne
-  @JsonIgnoreProperties("reviews")
-  @JoinColumn(name = "site_id")
-  private Site site;
+  @Column(name="logest_relationship")
+  private Integer longestRelationship;
+
+//  @ManyToOne
+//  @JsonIgnoreProperties("reviews")
+//  @JoinColumn(name = "site_id")
+//  private Site site;
 }
