@@ -3,7 +3,6 @@ package com.launchacademy.reviews.services;
 import com.launchacademy.reviews.models.Category;
 import com.launchacademy.reviews.repositories.CategoriesRepository;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +22,7 @@ public class CategoriesService {
   }
 
   public List<Category> findByName(String name) {
-    return categoriesRepository.findByName(name);
+    return (List<Category>)categoriesRepository.findByName(name);
   }
 
   public List<Category> findAll() {
