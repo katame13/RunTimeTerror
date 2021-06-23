@@ -25,6 +25,7 @@ public class ApiV1SitesController {
 
   @GetMapping
   public Map<String, List<Site>> getSites() {
+    System.out.println("Inside getSites");
     Map<String, List<Site>> siteMap = new HashMap<>();
     siteMap.put("sites", siteService.findAll());
     return siteMap;
