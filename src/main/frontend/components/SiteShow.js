@@ -6,7 +6,7 @@ const SiteShow = (props) => {
 
   const fetchSite = async() =>{
     try {
-     const response = await fetch(`/api/v1/sites/${id}`)
+     const response = await fetch(`/api/v1/sites/${siteId}`)
      if(!response.ok) {
       const errorMessage = `${response.status} (${response.statusText})`
       const error = new Error(errorMessage)
@@ -37,10 +37,10 @@ const SiteShow = (props) => {
   const { id, name, description, imgUrl, url, category} = site
 
   return(
-    <div>
-      <a href={url}> <h3>{name}</h3> </a>
-      <p>{imgUrl}</p>
-      <p>Category: {category} Description: {description}</p>
+   <div>
+      <a href={url}> <h1>{name}</h1> </a>
+      <img src={imgUrl} />
+      <p><strong>Description:</strong> {description}</p> 
     </div>
   )
 }
