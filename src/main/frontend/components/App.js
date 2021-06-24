@@ -12,11 +12,10 @@ const App = (props) => {
   }, []);
 
   return (
-    <div>
       <BrowserRouter>
-        <Route exact path="/" component={SitesIndex} />
+          <Route exact path="/sites" component={SitesIndex} />
       </BrowserRouter>
-    </div>
+
   );
 };
 
