@@ -1,9 +1,9 @@
 CREATE TABLE reviews
 (
-    id                   SERIAL PRIMARY KEY,
-    user_name            VARCHAR NOT NULL DEFAULT 'Anonymous',
-    rating               INTEGER MIN 1 MAX 5 NOT NULL,
-    review               TEXT,
+    id SERIAL PRIMARY KEY,
+    user_name VARCHAR DEFAULT 'Anonymous',
+    rating INTEGER NOT NULL,
+    review TEXT,
     longest_relationship INTEGER,
-    site_id                      NOT NULL INTEGER REFERENCES site(id)
+    site_id INTEGER REFERENCES sites(id) NOT NULL
 );

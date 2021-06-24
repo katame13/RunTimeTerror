@@ -19,7 +19,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "reviews")
 public class Review {
   @Id
-  @SequenceGenerator(name="reviews_generator", sequenceName = "reviewsid_seq", allocationSize = 1)
+  @SequenceGenerator(name="reviews_generator", sequenceName = "reviews_id_seq", allocationSize = 1)
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="reviews_generator")
   @Column(name="id", nullable = false, unique = true)
   private Integer id;
@@ -37,7 +37,7 @@ public class Review {
   @Column(name = "review")
   private String review;
 
-  @Column(name="logest_relationship")
+  @Column(name="longest_relationship")
   private Integer longestRelationship;
 
   @ManyToOne
