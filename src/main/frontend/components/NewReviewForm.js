@@ -1,10 +1,10 @@
-import React, {useState } from "react"
+import React, { useState } from "react"
 import _ from 'lodash'
 import ErrorList from "./ErrorList";
 
 const NewReviewForm = (props) => {
-  console.log(props.siteId)
-  const[formPayLoad, setFormPayLoad] = useState({
+  const [formPayload, setFormPayload] = useState({
+    siteId: props.siteId,
     userName: "",
     rating: "",
     review: "",
@@ -14,7 +14,7 @@ const NewReviewForm = (props) => {
   const validForSubmission = () => {
     const errors = {}
     for(const field in formPayload) {
-      if(formPayload[field].trim() === "") {
+      if(formPayload[field].toString().trim() === "") {
         errors[field] = "is blank"
       }
     }
@@ -22,7 +22,7 @@ const NewReviewForm = (props) => {
     return _.isEmpty(errors)
   }
   const clearForm = () =>{
-    setFormPayLoad({
+    setFormPayload({
       userName: "",
       rating:"",
       review: "",
@@ -31,9 +31,10 @@ const NewReviewForm = (props) => {
     setErrors({})
   }
   const handleSubmit = (event) =>{
+    console.log(formPayload)
     event.preventDefault()
     if(validForSubmission()){
-      props.postReviewForm(formPayLoad)
+      props.postReviewForm(formPayload)
       clearForm()
     }
   }

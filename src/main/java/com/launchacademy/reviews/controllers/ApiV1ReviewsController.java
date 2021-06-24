@@ -1,12 +1,18 @@
 package com.launchacademy.reviews.controllers;
 
 import com.launchacademy.reviews.models.Review;
+import com.launchacademy.reviews.models.Site;
 import com.launchacademy.reviews.services.CategoriesService;
 import com.launchacademy.reviews.services.ReviewService;
 import com.launchacademy.reviews.services.SiteService;
 import java.util.HashMap;
 import java.util.Map;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,41 +37,28 @@ public class ApiV1ReviewsController {
     this.categoriesService = categoriesService;
   }
 
-//  @PostMapping
-//  public ResponseEntity addReview(@RequestBody @Valid Review review, BindingResult bindingResult) {
-//    if (bindingResult.hasErrors()) {
-//      Map<String, Map<String, String>> errorsData = new HashMap<>();
-//      Map<String, String> errorsMap = new HashMap<>();
-//      for(FieldError error :  bindingResult.getFieldErrors()){
-//        errorsMap.put(error.getField(), error.getDefaultMessage());
-//      }
-//      errorsData.put("errors", errorsMap);
-//      return new ResponseEntity<Object>(errorsData, HttpStatus.UNPROCESSABLE_ENTITY);
-//    } else {
-////Happy path needs site id being passed back from front end
-////      Site site = siteService.findById(.getPetTypeId());
-//      pet.setPetType(petType);
-//      Map<String, Pet> petData = new HashMap<>();
-//      petService.saveAsAvailable(pet);
-//      petData.put("pet", pet);
-//      return new ResponseEntity<Object>(petData, HttpStatus.CREATED);
-//    }
-//  }
 
-
-//
-//  @PostMapping
-//  public Map<String, Review> createReview(@RequestBody Map<String, String> newReview) {
-//    Review review = new Review();
-//    Map<String, Review> persistedReview = new HashMap<>();
-//    review.setUserName(newReview.get("name"));
-//    review.setRating(Integer.valueOf(newReview.get("rating")));
-//    review.setReview(newReview.get("review"));
-//    review.setLongestRelationship(Integer.valueOf(newReview.get("longestRelationship")));
-//    reviewService.save(review);
-//    persistedReview.put("review", review);
-//
-//    return persistedReview;
-//  }
-
+    @PostMapping("/{id}/addreview")
+  public ResponseEntity createReview(@PathVariable Integer id, @RequestBody @Valid Review review,
+    BindingResult bindingResult) {
+    System.out.println("inside addReview");
+    if (bindingResult.hasErrors()) {
+      System.out.println("has errors");
+      Map<String, Map<String, String>> errorsData = new HashMap<>();
+      Map<String, String> errorsMap = new HashMap<>();
+      for (FieldError error : bindingResult.getFieldErrors()) {
+        errorsMap.put(error.getField(), error.getDefaultMessage());
+      }
+      errorsData.put("errors", errorsMap);
+      return new ResponseEntity<Object>(errorsData, HttpStatus.UNPROCESSABLE_ENTITY);
+    } else {
+      System.out.println("happy path");
+      Site site = siteService.findById(id);
+      review.setSite(site);
+      Map<String, Review> reviewData = new HashMap<>();
+      reviewService.save(review);
+      reviewData.put("review", review);
+      return new ResponseEntity<Object>(reviewData, HttpStatus.CREATED);
+    }
+  }
 }
