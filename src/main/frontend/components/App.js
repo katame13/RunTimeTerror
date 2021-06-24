@@ -23,7 +23,6 @@ const App = (props) => {
           <Route exact path ="/sites/new" component={AddNewSiteForm}/>
           <Route exact path="/sites/:id" component={SiteShow} /> 
         </Switch>
-          
       </BrowserRouter>
 
   );
