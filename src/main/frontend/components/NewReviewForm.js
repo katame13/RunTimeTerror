@@ -1,8 +1,10 @@
 import React, {useState } from "react"
 import _ from 'lodash'
+import ErrorList from "./ErrorList";
+
 const NewReviewForm = (props) => {
   const[formPayLoad, setFormPayLoad] = useState({
-    name: "",
+    userName: "",
     rating: "",
     review: "",
     longestRelationship: ""
@@ -20,7 +22,7 @@ const NewReviewForm = (props) => {
   }
   const clearForm = () =>{
     setFormPayLoad({
-      name: "",
+      userName: "",
       rating:"",
       review: "",
       longestRelationship: ""
@@ -44,12 +46,12 @@ const NewReviewForm = (props) => {
       <form className="review" onSubmit={handleSubmit}>
         <ErrorList errors={{...errors, ...props.errors}} />
         <div>
-          <label htmlFor="name">Name: </label>
+          <label htmlFor="userName">UserName: </label>
           <input
-              name="name"
-              id="name"
+              name="userName"
+              id="userName"
               type="text"
-              value={formPayload.name}
+              value={formPayload.userName}
               onChange={handleInputChange}
           />
         </div>

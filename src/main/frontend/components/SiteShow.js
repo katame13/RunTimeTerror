@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import ReviewTile from "./ReviewTile";
+import NewReviewForm from "./NewReviewForm";
 
 const SiteShow = (props) => {
   const [site, setSite] = useState({reviews: []});
@@ -36,6 +37,23 @@ const SiteShow = (props) => {
     )
   }
 
+ const postReviewForm = async (formPayLoad) => {
+   try {
+     const response = await fetch(`/api/v1/reviews`)
+     if (!response.ok) {
+       const errorMessage = `${response.status} (${response.statusText})`
+       const error = new Error(errorMessage)
+       throw(error)
+     }
+     const siteData = await response.json()
+     setSite(siteData.site)
+
+   } catch (error) {
+     console.error(`Error in fetch: ${error.message}`)
+     setSite(null)
+   }
+  }
+
   const reviewTiles = site.reviews.map(review => {
     return (
         <ReviewTile
@@ -52,6 +70,7 @@ const SiteShow = (props) => {
         <a href={url}><h1>{name}</h1></a>
         <img src={imgUrl}/>
         <p><strong>Description:</strong> {description}</p>
+        <NewReviewForm/>
         {reviewTiles}
       </div>
   )

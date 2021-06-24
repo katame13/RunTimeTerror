@@ -6,6 +6,7 @@ import com.launchacademy.reviews.services.ReviewService;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,29 @@ public class ApiV1ReviewsController {
     this.categoriesService = categoriesService;
   }
 
-  //  @PostMapping
+//  @PostMapping
+//  public ResponseEntity addPet(@RequestBody @Valid Pet pet, BindingResult bindingResult) {
+//    if (bindingResult.hasErrors()) {
+//      Map<String, Map<String, String>> errorsData = new HashMap<>();
+//      Map<String, String> errorsMap = new HashMap<>();
+//      for(FieldError error :  bindingResult.getFieldErrors()){
+//        errorsMap.put(error.getField(), error.getDefaultMessage());
+//      }
+//      errorsData.put("errors", errorsMap);
+//      return new ResponseEntity<Object>(errorsData, HttpStatus.UNPROCESSABLE_ENTITY);
+//    } else {
+//      PetType petType= petTypeService.findById(pet.getPetTypeId());
+//      pet.setPetType(petType);
+//      Map<String, Pet> petData = new HashMap<>();
+//      petService.saveAsAvailable(pet);
+//      petData.put("pet", pet);
+//      return new ResponseEntity<Object>(petData, HttpStatus.CREATED);
+//    }
+//  }
+
+
+//
+//  @PostMapping
 //  public Map<String, Review> createReview(@RequestBody Map<String, String> newReview) {
 //    Review review = new Review();
 //    Map<String, Review> persistedReview = new HashMap<>();
