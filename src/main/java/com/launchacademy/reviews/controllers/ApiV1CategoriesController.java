@@ -35,8 +35,9 @@ public class ApiV1CategoriesController {
     if(category.isEmpty()){
       throw new CategoryNotFoundException();
     }else{
-
-      return
+      Map<String, Category> categoryMap = new HashMap<>();
+      categoryMap.put("category", category.get());
+      return categoryMap;
     }
   }
 
