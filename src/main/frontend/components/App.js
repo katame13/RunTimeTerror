@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { hot } from "react-hot-loader/root";
+import React, {useEffect} from "react";
+import {hot} from "react-hot-loader/root";
 import "foundation-sites";
 import $ from "jquery";
-import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom"
+import {Route, BrowserRouter, Switch, Redirect} from "react-router-dom"
 
 import SitesIndex from "./SitesIndex";
 import SiteShow from "./SiteShow";
@@ -24,7 +24,6 @@ const App = (props) => {
           <Route exact path="/sites/:id" component={SiteShow} /> 
         </Switch>
       </BrowserRouter>
-
   );
 };
 
