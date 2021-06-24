@@ -36,6 +36,9 @@ public class Site {
   @Column(name = "img_url")
   private String imgUrl;
 
+  @Column(name = "description")
+  private String description;
+
   @ManyToOne
   @JoinColumn(name="category_id", nullable=false)
   @JsonIgnoreProperties("sites")
