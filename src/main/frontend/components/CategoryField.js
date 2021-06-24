@@ -25,8 +25,8 @@ const CategoryField = props =>{
   const categoryOptions = category.map(type =>{
     return (
       <option key={type.id} value={type.id}>
-      {type.name}
-    </option>
+        {type.name}
+      </option>
     )
   })
 
@@ -37,7 +37,6 @@ const CategoryField = props =>{
       value = {props.categoryId}>
         {categoryOptions}
       </select>
-
     </div>
   )
 }

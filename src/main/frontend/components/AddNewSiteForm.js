@@ -18,7 +18,6 @@ const AddNewSiteForm = (props) => {
   const [siteId, setSiteId] = useState(null)
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
-
   const validForSubmission = () => {
     const errors = {}
     const requiredFields = ["name", "url", "imgUrl", "description", "categoryId"]
@@ -57,9 +56,9 @@ const AddNewSiteForm = (props) => {
       console.error(`Error in fetch: ${err.message}`)
     }
   }
+
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(formPayload);
     if (validForSubmission()) {
       addSite()
     }
@@ -75,8 +74,8 @@ const AddNewSiteForm = (props) => {
   if (shouldRedirect) {
     return <Redirect push to={`/sites/${siteId}`} />
   }
-  return (
 
+  return (
     <form onSubmit={handleSubmit}>
       <ErrorList errors={errors} />
       <div>
