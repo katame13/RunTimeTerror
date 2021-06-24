@@ -28,32 +28,32 @@ const SiteShow = (props) => {
 
   if (!site) {
     return (
-        <div>
-          <h1>Sorry this App/Dating Site can not be found</h1>
-          <img src={"https://error404.fun/img/full-preview/1x/9.png"}
-               height="100%" alt="Page Not Found"/>
-        </div>
+      <div>
+        <h1>Sorry this App/Dating Site can not be found</h1>
+        <img src={"https://error404.fun/img/full-preview/1x/9.png"}
+             height="100%" alt="Page Not Found"/>
+      </div>
     )
   }
 
   const reviewTiles = site.reviews.map(review => {
     return (
-        <ReviewTile
-            key={review.id}
-            review={review}
-        />
+      <ReviewTile
+        key={review.id}
+        review={review}
+      />
     )
   })
 
   const {id, name, description, imgUrl, url, category} = site
 
   return (
-      <div>
-        <a href={url}><h1>{name}</h1></a>
-        <img src={imgUrl}/>
-        <p><strong>Description:</strong> {description}</p>
-        {reviewTiles}
-      </div>
+    <div>
+      <a href={url}><h1>{name}</h1></a>
+      <img src={imgUrl}/>
+      <p><strong>Description:</strong> {description}</p>
+      {reviewTiles}
+    </div>
   )
 }
 
