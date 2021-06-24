@@ -6,10 +6,10 @@ const SiteTile = (props) => {
   return (
     <div>
       <div>
-        <img src={imgUrl}></img>
-      </div>
-      <div>
-        <h3>{name}</h3>
+        <a href={`/sites/${id}`} >
+          <img src={imgUrl}></img>
+          <h3>{name}</h3>
+        </a>
         <a href={url}>Visit the Site</a>
         <p>{category.name}</p>
         <p>{description}</p>
