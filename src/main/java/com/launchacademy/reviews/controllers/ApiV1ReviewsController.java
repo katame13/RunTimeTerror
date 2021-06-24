@@ -3,10 +3,12 @@ package com.launchacademy.reviews.controllers;
 import com.launchacademy.reviews.models.Review;
 import com.launchacademy.reviews.services.CategoriesService;
 import com.launchacademy.reviews.services.ReviewService;
+import com.launchacademy.reviews.services.SiteService;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,18 +18,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1/reviews")
 public class ApiV1ReviewsController {
 
+  private SiteService siteService;
   private ReviewService reviewService;
   private CategoriesService categoriesService;
 
   @Autowired
-  public ApiV1ReviewsController(ReviewService reviewService,
-      CategoriesService categoriesService) {
+  public ApiV1ReviewsController(SiteService siteService,
+    ReviewService reviewService,
+    CategoriesService categoriesService) {
+    this.siteService = siteService;
     this.reviewService = reviewService;
     this.categoriesService = categoriesService;
   }
 
 //  @PostMapping
-//  public ResponseEntity addPet(@RequestBody @Valid Pet pet, BindingResult bindingResult) {
+//  public ResponseEntity addReview(@RequestBody @Valid Review review, BindingResult bindingResult) {
 //    if (bindingResult.hasErrors()) {
 //      Map<String, Map<String, String>> errorsData = new HashMap<>();
 //      Map<String, String> errorsMap = new HashMap<>();
@@ -37,7 +42,8 @@ public class ApiV1ReviewsController {
 //      errorsData.put("errors", errorsMap);
 //      return new ResponseEntity<Object>(errorsData, HttpStatus.UNPROCESSABLE_ENTITY);
 //    } else {
-//      PetType petType= petTypeService.findById(pet.getPetTypeId());
+////Happy path needs site id being passed back from front end
+////      Site site = siteService.findById(.getPetTypeId());
 //      pet.setPetType(petType);
 //      Map<String, Pet> petData = new HashMap<>();
 //      petService.saveAsAvailable(pet);

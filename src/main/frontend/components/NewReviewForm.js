@@ -3,6 +3,7 @@ import _ from 'lodash'
 import ErrorList from "./ErrorList";
 
 const NewReviewForm = (props) => {
+  console.log(props.siteId)
   const[formPayLoad, setFormPayLoad] = useState({
     userName: "",
     rating: "",

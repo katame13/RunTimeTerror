@@ -70,7 +70,9 @@ const SiteShow = (props) => {
         <a href={url}><h1>{name}</h1></a>
         <img src={imgUrl}/>
         <p><strong>Description:</strong> {description}</p>
-        <NewReviewForm/>
+        <NewReviewForm
+        siteId = {site.id}
+        />
         {reviewTiles}
       </div>
   )
