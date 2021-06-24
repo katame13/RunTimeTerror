@@ -3,6 +3,7 @@ package com.launchacademy.reviews.services;
 import com.launchacademy.reviews.models.Category;
 import com.launchacademy.reviews.repositories.CategoriesRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,4 +34,7 @@ public class CategoriesService {
     return categoriesRepository.findById(id).get();
   }
 
+  public Optional<Category> optionalFindById(Integer id){
+    return categoriesRepository.findById(id);
+  }
 }
