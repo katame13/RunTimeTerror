@@ -13,9 +13,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
 
 
 @Entity
@@ -30,17 +33,27 @@ public class Site {
   @Column(name="id", nullable = false, unique = true)
   private Integer id;
 
+  @NotBlank
   @Column(name = "name" , nullable = false)
   private String name;
 
+  @NotBlank
+  @URL
   @Column(name = "url" , nullable = false)
   private String url;
 
+  @URL
+  @NotBlank
   @Column(name = "img_url")
   private String imgUrl;
 
+  @NotBlank
+  @Length(max=765)
   @Column(name = "description")
   private String description;
+
+  @Column(name = "category_id", nullable = false, insertable = false, updatable = false)
+  private Integer categoryId;
 
   @ManyToOne
   @JoinColumn(name="category_id", nullable=false)

@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import ReviewTile from "./ReviewTile";
 import NewReviewForm from "./NewReviewForm";
 
 const SiteShow = (props) => {
-  const [site, setSite] = useState({reviews: []});
+  const [site, setSite] = useState({ reviews: [] });
   const siteId = props.match.params.id;
 
   const fetchSite = async () => {
@@ -12,7 +12,7 @@ const SiteShow = (props) => {
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error(errorMessage)
-        throw(error)
+        throw (error)
       }
       const siteData = await response.json()
       setSite(siteData.site)
@@ -32,7 +32,7 @@ const SiteShow = (props) => {
       <div>
         <h1>Sorry this App/Dating Site can not be found</h1>
         <img src={"https://error404.fun/img/full-preview/1x/9.png"}
-             height="100%" alt="Page Not Found"/>
+          height="100%" alt="Page Not Found" />
       </div>
     )
   }
@@ -41,12 +41,12 @@ const SiteShow = (props) => {
     try {
       const response = await fetch(
         `/api/v1/reviews/${siteId}/addreview`, {
-          method: 'POST',
-          headers: new Headers({
-            'Content-Type': 'application/json'
-          }),
-          body: JSON.stringify(formPayload)
-        })
+        method: 'POST',
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify(formPayload)
+      })
       if (!response.ok) {
         if (response.status === 422) {
           const body = await response.json()
@@ -56,7 +56,7 @@ const SiteShow = (props) => {
         } else {
           const errorMessage = `${response.status} (${response.statusText})`
           const error = new Error(errorMessage)
-          throw(error)
+          throw (error)
         }
       }
     } catch (err) {
@@ -69,23 +69,24 @@ const SiteShow = (props) => {
       <ReviewTile
         key={review.id}
         review={review}
-
       />
     )
   })
 
-  const {id, name, description, imgUrl, url, category} = site
+  const { id, name, description, imgUrl, url, category } = site
 
   return (
     <div>
       <a href={url}><h1>{name}</h1></a>
-      <img src={imgUrl}/>
+      <img src={imgUrl} />
       <p><strong>Description:</strong> {description}</p>
       <NewReviewForm
         key={id}
         siteId={id}
         postReviewForm={postReviewForm}
       />
+      <a href={url}><p>Visit the Site</p></a>
+      <p><strong>Description:</strong> {description}</p>
       {reviewTiles}
     </div>
   )

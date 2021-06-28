@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1/reviews")
 public class ApiV1ReviewsController {
 
-  private SiteService siteService;
   private ReviewService reviewService;
   private CategoriesService categoriesService;
 

@@ -17,7 +17,8 @@ const SitesIndex = props => {
 
       const sitesData = await response.json()
       setSites(sitesData.sites)
-    } catch (err) { }
+    } catch (err) {
+    }
     console.error(`Error in fetch: ${err.message}`)
   }
   useEffect(() => {
@@ -35,7 +36,7 @@ const SitesIndex = props => {
 
   return (
     <div>
-      <p>this is site index</p>
+      <h1>LOVE REVIEWS</h1>
       {siteTiles}
     </div>
   )
