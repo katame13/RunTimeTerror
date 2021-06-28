@@ -6,7 +6,8 @@ import {Route, BrowserRouter, Switch, Redirect} from "react-router-dom"
 
 import SitesIndex from "./SitesIndex";
 import SiteShow from "./SiteShow";
-import AddNewSiteForm from "./AddNewSiteForm";
+import AddNewSiteForm from "./AddNewSiteForm"
+import CategoryShow from "./CategoryShow"
 
 const App = (props) => {
   useEffect(() => {
@@ -20,8 +21,9 @@ const App = (props) => {
             <Redirect to="/sites" />
           </Route>
           <Route exact path="/sites" component={SitesIndex} />
-          <Route exact path ="/sites/new" component={AddNewSiteForm}/>
-          <Route exact path="/sites/:id" component={SiteShow} /> 
+          <Route exact path ="/sites/new" component={AddNewSiteForm} />
+          <Route exact path="/sites/:id" component={SiteShow} />
+          <Route exact path="/categories/:id" component={CategoryShow} />
         </Switch>
       </BrowserRouter>
   );

@@ -51,6 +51,7 @@ const SiteShow = (props) => {
     <div>
       <a href={url}><h1>{name}</h1></a>
       <img src={imgUrl}/>
+        <a href={url}><p>Visit the Site</p></a>
       <p><strong>Description:</strong> {description}</p>
       {reviewTiles}
     </div>
