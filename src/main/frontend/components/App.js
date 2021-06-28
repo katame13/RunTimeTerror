@@ -8,6 +8,7 @@ import SitesIndex from "./SitesIndex";
 import SiteShow from "./SiteShow";
 import AddNewSiteForm from "./AddNewSiteForm"
 import CategoryShow from "./CategoryShow"
+import EditSiteForm from "./EditSiteForm"
 
 const App = (props) => {
   useEffect(() => {
@@ -24,6 +25,7 @@ const App = (props) => {
           <Route exact path ="/sites/new" component={AddNewSiteForm} />
           <Route exact path="/sites/:id" component={SiteShow} />
           <Route exact path="/categories/:id" component={CategoryShow} />
+          <Route exact path="/sites/:id/edit" component={EditSiteForm} />
         </Switch>
       </BrowserRouter>
   );

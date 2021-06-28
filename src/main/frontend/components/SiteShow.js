@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import ReviewTile from "./ReviewTile";
+import EditSiteForm from "./EditSiteForm"
 
 const SiteShow = (props) => {
   const [site, setSite] = useState({reviews: []});
@@ -54,6 +55,10 @@ const SiteShow = (props) => {
         <a href={url}><p>Visit the Site</p></a>
       <p><strong>Description:</strong> {description}</p>
       {reviewTiles}
+//      <EditSiteForm
+//      key ={site.id}
+//      site ={site}
+//      />
     </div>
   )
 }
