@@ -4,6 +4,9 @@ import NewReviewForm from "./NewReviewForm";
 
 const SiteShow = (props) => {
   const [site, setSite] = useState({ reviews: [] });
+  const[formErrors, setFormErrors] = useState({})
+  const [showForm, setShowForm] = useState(false)
+  const [successfulApplicationStatus, setSuccessfulApplicationStatus] = useState(false)
   const siteId = props.match.params.id;
 
   const fetchSite = async () => {
@@ -50,7 +53,6 @@ const SiteShow = (props) => {
       if (!response.ok) {
         if (response.status === 422) {
           const body = await response.json()
-          debugger
           console.log(body.errors)
           return setFormErrors(body.errors)
         } else {
@@ -59,6 +61,8 @@ const SiteShow = (props) => {
           throw (error)
         }
       }
+      setSuccessfulApplicationStatus(true)
+      setShowForm(false)
     } catch (err) {
       console.error(`Error in fetch: ${err.message}`)
     }
@@ -73,20 +77,38 @@ const SiteShow = (props) => {
     )
   })
 
-  const { id, name, description, imgUrl, url, category } = site
+  const handleFormButtonClick = event => {
+    event.preventDefault()
+    setShowForm(true)
+  }
+
+  let successMessageTag;
+  if(successfulApplicationStatus) {
+    successMessageTag = <p><strong>Your request is in process.</strong></p>
+  }
+
+  let newReviewForm
+  if(showForm) {
+    newReviewForm = <NewReviewForm
+      key={id}
+      siteId={id}
+      postReviewForm={postReviewForm}
+      errors={formErrors}
+    />
+  }
+
+
+    const { id, name, description, imgUrl, url } = site
 
   return (
     <div>
       <a href={url}><h1>{name}</h1></a>
       <img src={imgUrl} />
-      <p><strong>Description:</strong> {description}</p>
-      <NewReviewForm
-        key={id}
-        siteId={id}
-        postReviewForm={postReviewForm}
-      />
       <a href={url}><p>Visit the Site</p></a>
       <p><strong>Description:</strong> {description}</p>
+      {successMessageTag}
+      <button type="button" className="button" onClick={handleFormButtonClick}>Add A Review</button>
+      {newReviewForm}
       {reviewTiles}
     </div>
   )

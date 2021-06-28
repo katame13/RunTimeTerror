@@ -3,6 +3,8 @@ import _ from 'lodash'
 import ErrorList from "./ErrorList";
 
 const NewReviewForm = (props) => {
+  console.log(props.errors);
+  console.log(errors);
   const [formPayload, setFormPayload] = useState({
     siteId: props.siteId,
     userName: "",
@@ -44,6 +46,7 @@ const NewReviewForm = (props) => {
       [event.currentTarget.name]: event.currentTarget.value
     })
   }
+  console.log(props.errors);
   return(
       <form className="review" onSubmit={handleSubmit}>
         <ErrorList errors={{...errors, ...props.errors}} />

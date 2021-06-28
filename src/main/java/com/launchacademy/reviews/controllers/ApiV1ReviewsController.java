@@ -26,6 +26,7 @@ public class ApiV1ReviewsController {
 
   private ReviewService reviewService;
   private CategoriesService categoriesService;
+  private SiteService siteService;
 
   @Autowired
   public ApiV1ReviewsController(SiteService siteService,
