@@ -50,6 +50,26 @@ public class ApiV1SitesController {
     return siteMap;
   }
 
+  @PostMapping("/{id}/edit")
+  public ResponseEntity editSite(@RequestBody @Valid Site site, BindingResult bindingResult){
+    if(bindingResult.hasErrors()){
+      List<FieldError> errorList = bindingResult.getFieldErrors();
+      Map<String, String> errorFields = new HashMap<>();
+      for(FieldError fieldError : errorList){
+        errorFields.put(fieldError.getField(),fieldError.getDefaultMessage());
+      }
+      Map<String, Map<String, String>> errorMap = new HashMap<>();
+      errorMap.put("errors", errorFields);
+      return new ResponseEntity<Object>(errorMap, HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+    Category category = categoriesService.findById(site.getCategoryId());
+    site.setCategory(category);
+    siteService.save(site);
+    Map<String, Site> savedSite = new HashMap<>();
+    savedSite.put("site", site);
+    return ResponseEntity.ok(savedSite);
+  }
+
   @PostMapping
   public ResponseEntity addSite(@RequestBody @Valid Site site, BindingResult bindingResult){
     if(bindingResult.hasErrors()){
