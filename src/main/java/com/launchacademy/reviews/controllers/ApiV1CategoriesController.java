@@ -43,7 +43,6 @@ public class ApiV1CategoriesController {
 
   @NoArgsConstructor
   private class CategoryNotFoundException extends RuntimeException {
-
   }
 
   @ControllerAdvice
@@ -56,4 +55,5 @@ public class ApiV1CategoriesController {
       return ex.getMessage();
     }
   }
+
 }

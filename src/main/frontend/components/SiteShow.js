@@ -1,19 +1,20 @@
-import React, {useEffect, useState}from "react";
+import React, {useEffect, useState} from "react";
+import ReviewTile from "./ReviewTile";
 
 const SiteShow = (props) => {
-  const [site, setSite] = useState({});
+  const [site, setSite] = useState({reviews: []});
   const siteId = props.match.params.id;
 
-  const fetchSite = async() =>{
+  const fetchSite = async () => {
     try {
-     const response = await fetch(`/api/v1/sites/${siteId}`)
-     if(!response.ok) {
-      const errorMessage = `${response.status} (${response.statusText})`
-      const error = new Error(errorMessage)
-      throw(error)
-    }
-    const siteData = await response.json()
-    setSite(siteData.site)
+      const response = await fetch(`/api/v1/sites/${siteId}`)
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        const error = new Error(errorMessage)
+        throw(error)
+      }
+      const siteData = await response.json()
+      setSite(siteData.site)
 
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
@@ -21,27 +22,38 @@ const SiteShow = (props) => {
     }
   }
 
-  useEffect(() =>{
+  useEffect(() => {
     fetchSite()
   }, [])
 
-  if(!site){
-    return(
+  if (!site) {
+    return (
       <div>
         <h1>Sorry this App/Dating Site can not be found</h1>
-        <img src={"https://error404.fun/img/full-preview/1x/9.png"} height="100%" alt="Page Not Found" />
+        <img src={"https://error404.fun/img/full-preview/1x/9.png"}
+             height="100%" alt="Page Not Found"/>
       </div>
-    ) 
+    )
   }
 
-  const { id, name, description, imgUrl, url, category} = site
+  const reviewTiles = site.reviews.map(review => {
+    return (
+      <ReviewTile
+        key={review.id}
+        review={review}
+      />
+    )
+  })
 
-  return(
-   <div>
-      <a href={url}> <h1>{name}</h1> </a>
-      <img src={imgUrl} />
-      <a href={url}><p>Visit the Site</p></a>
-      <p><strong>Description:</strong> {description}</p> 
+  const {id, name, description, imgUrl, url, category} = site
+
+  return (
+    <div>
+      <a href={url}><h1>{name}</h1></a>
+      <img src={imgUrl}/>
+        <a href={url}><p>Visit the Site</p></a>
+      <p><strong>Description:</strong> {description}</p>
+      {reviewTiles}
     </div>
   )
 }
