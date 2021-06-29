@@ -1,10 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import ReviewTile from "./ReviewTile";
+import Link from "react-router-dom";
 import EditSiteForm from "./EditSiteForm"
 
 const SiteShow = (props) => {
-  const [site, setSite] = useState({reviews: []});
+  const [site, setSite] = useState({ reviews: [] });
   const siteId = props.match.params.id;
+  const siteData = {};
 
   const fetchSite = async () => {
     try {
@@ -12,9 +14,9 @@ const SiteShow = (props) => {
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error(errorMessage)
-        throw(error)
+        throw (error)
       }
-      const siteData = await response.json()
+      siteData = await response.json()
       setSite(siteData.site)
 
     } catch (error) {
@@ -32,7 +34,7 @@ const SiteShow = (props) => {
       <div>
         <h1>Sorry this App/Dating Site can not be found</h1>
         <img src={"https://error404.fun/img/full-preview/1x/9.png"}
-             height="100%" alt="Page Not Found"/>
+          height="100%" alt="Page Not Found" />
       </div>
     )
   }
@@ -46,19 +48,16 @@ const SiteShow = (props) => {
     )
   })
 
-  const {id, name, description, imgUrl, url, category} = site
+  const { id, name, description, imgUrl, url, category } = site
 
   return (
     <div>
       <a href={url}><h1>{name}</h1></a>
-      <img src={imgUrl}/>
-        <a href={url}><p>Visit the Site</p></a>
+      <img src={imgUrl} />
+      <a href={url}><p>Visit the Site</p></a>
       <p><strong>Description:</strong> {description}</p>
       {reviewTiles}
-//      <EditSiteForm
-//      key ={site.id}
-//      site ={site}
-//      />
+      <Link to={'/sites/${siteId}/edit'}></Link>
     </div>
   )
 }

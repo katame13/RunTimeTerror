@@ -6,8 +6,11 @@ import CategoryField from "./CategoryField"
 import ErrorList from "./ErrorList"
 
 const EditSiteForm = (props) => {
-  const [formPayload, setFormPayLoad] = useState({
   console.log(props)
+  console.log("This is props")
+  console.log(props.site)
+  const siteId = props.match.params.id;
+  const [formPayload, setFormPayLoad] = useState({
   //pass id from site show page
 //    id: {props.site.id},
     name: "",
