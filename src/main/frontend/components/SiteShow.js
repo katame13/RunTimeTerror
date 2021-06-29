@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
 import ReviewTile from "./ReviewTile";
+import { Redirect } from "react-router-dom";
 
 const SiteShow = (props) => {
   const [site, setSite] = useState({reviews: []});
+  const [shouldRedirect, setShouldRedirect] = useState(false)
   const siteId = props.match.params.id;
 
   const fetchSite = async () => {
@@ -24,13 +26,27 @@ const SiteShow = (props) => {
 
 const deleteSite = async () => {
 try{
- let response = await fetch(`/api/v1/sites/${siteId}/delete`, {
+ let response = await fetch(`/api/v1/sites/${siteId}`, {
  method: "DELETE",
- });
+ headers: new Headers({
+ 'Content-Type': 'application/json'
+ })
+ })
+  if (!response.ok) {
+   if(response.status === 422) {
+     const body = await response.json()
+     return setErrors(body.errors)
+   } else {
+     const errorMessage = `${response.status} (${response.statusText})`
+     const error = new Error(errorMessage)
+     throw(error)
+   }
+ }
+ setShouldRedirect (true)
 }catch(err){
+console.error(`Error in fetch: ${err.message}`)
 }
 }
-
 
   useEffect(() => {
     fetchSite()
@@ -55,6 +71,17 @@ try{
     )
   })
 
+let redirect;
+    if(shouldRedirect){
+    redirect = <Redirect to = {"/sites"}/>
+    }
+
+
+  const handleDeleteClick = (event) => {
+    event.preventDefault()
+    deleteSite()
+}
+
   const {id, name, description, imgUrl, url, category} = site
 
   return (
@@ -63,7 +90,11 @@ try{
       <img src={imgUrl}/>
         <a href={url}><p>Visit the Site</p></a>
       <p><strong>Description:</strong> {description}</p>
+      <div>
+      <button type ="button" onClick = {handleDeleteClick} >Delete Site </button>
+      </div>
       {reviewTiles}
+      {redirect}
     </div>
   )
 }

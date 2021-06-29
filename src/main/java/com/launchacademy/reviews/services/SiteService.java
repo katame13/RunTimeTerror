@@ -36,10 +36,6 @@ private ReviewRepository reviewRepository;
 
   public void delete(int id){
   Site site = siteRepo.findById(id).get();
-  List<Review> reviews = site.getReviews();
-  for(Review review : reviews){
-    reviewRepository.delete(review);
-  }
   siteRepo.delete(site);
   }
 }

@@ -50,11 +50,10 @@ public class ApiV1SitesController {
     return siteMap;
   }
 
-  @PostMapping("/{id}/delete")
+  @DeleteMapping("/{id}")
   public void delete(@PathVariable int id){
     siteService.delete(id);
   }
-
 
   @PostMapping
   public ResponseEntity addSite(@RequestBody @Valid Site site, BindingResult bindingResult){
