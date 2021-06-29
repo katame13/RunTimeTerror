@@ -25,7 +25,7 @@ const App = (props) => {
           <Route exact path ="/sites/new" component={AddNewSiteForm} />
           <Route exact path="/sites/:id" component={SiteShow} />
           <Route exact path="/categories/:id" component={CategoryShow} />
-          <Route exact path="/sites/:id/edit" component={EditSiteForm} />
+          <Route exact path="/sites/edit/:id" component={EditSiteForm} />
         </Switch>
       </BrowserRouter>
   );

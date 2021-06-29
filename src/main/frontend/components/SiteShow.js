@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ReviewTile from "./ReviewTile";
-import Link from "react-router-dom";
+import { Link } from "react-router-dom";
 import EditSiteForm from "./EditSiteForm"
 
 const SiteShow = (props) => {
   const [site, setSite] = useState({ reviews: [] });
   const siteId = props.match.params.id;
-  const siteData = {};
 
   const fetchSite = async () => {
     try {
@@ -16,7 +15,7 @@ const SiteShow = (props) => {
         const error = new Error(errorMessage)
         throw (error)
       }
-      siteData = await response.json()
+      const siteData = await response.json()
       setSite(siteData.site)
 
     } catch (error) {
@@ -56,8 +55,8 @@ const SiteShow = (props) => {
       <img src={imgUrl} />
       <a href={url}><p>Visit the Site</p></a>
       <p><strong>Description:</strong> {description}</p>
+      <Link to={`/sites/edit/${siteId}`}>Edit the Site</Link>
       {reviewTiles}
-      <Link to={'/sites/${siteId}/edit'}></Link>
     </div>
   )
 }

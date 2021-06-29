@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Redirect } from "react-router"
 import _ from 'lodash'
 
@@ -6,13 +6,8 @@ import CategoryField from "./CategoryField"
 import ErrorList from "./ErrorList"
 
 const EditSiteForm = (props) => {
-  console.log(props)
-  console.log("This is props")
-  console.log(props.site)
   const siteId = props.match.params.id;
   const [formPayload, setFormPayLoad] = useState({
-  //pass id from site show page
-//    id: {props.site.id},
     name: "",
     url: "",
     imgUrl: "",
@@ -21,14 +16,34 @@ const EditSiteForm = (props) => {
   })
 
   const [errors, setErrors] = useState({})
-//  const [siteId, setSiteId] = useState(null)
   const [shouldRedirect, setShouldRedirect] = useState(false)
+
+  const fetchSite = async () => {
+      try {
+        const response = await fetch(`/api/v1/sites/${siteId}`)
+        if (!response.ok) {
+          const errorMessage = `${response.status} (${response.statusText})`
+          const error = new Error(errorMessage)
+          throw (error)
+        }
+        const siteData = await response.json()
+        setFormPayLoad(siteData.site)
+
+      } catch (error) {
+        console.error(`Error in fetch: ${error.message}`)
+        setFormPayLoad(null)
+      }
+    }
+
+     useEffect(() => {
+        fetchSite()
+      }, [])
 
   const validForSubmission = () => {
     const errors = {}
     const requiredFields = ["name", "url", "imgUrl", "description", "categoryId"]
     requiredFields.forEach(field => {
-      if (formPayload[field].trim() === "") {
+      if (formPayload[field].toString().trim() === "") {
         errors[field] = "is blank"
       }
     })
@@ -38,8 +53,8 @@ const EditSiteForm = (props) => {
 
   const editSite = async () => {
     try {
-      const response = await fetch(`/api/v1/sites/${id}/edit`, {
-        method: 'POST',
+      const response = await fetch(`/api/v1/sites/${siteId}`, {
+        method: 'PUT',
         headers: new Headers({
           'Content-Type': 'application/json'
         }),
@@ -56,7 +71,6 @@ const EditSiteForm = (props) => {
         }
       }
       const body = await response.json()
-      setSiteId(body.site.id)
       setShouldRedirect(true)
     } catch (err) {
       console.error(`Error in fetch: ${err.message}`)
@@ -130,7 +144,7 @@ const EditSiteForm = (props) => {
 
       <CategoryField handleInputChange={handleInputChange}
         categoryId={formPayload.categoryId} />
-      <input type="submit" value="Edit Site" />
+      <input type="submit" value="Update Site" />
 
     </form>
   )
