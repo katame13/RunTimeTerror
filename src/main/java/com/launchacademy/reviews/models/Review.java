@@ -1,9 +1,13 @@
 package com.launchacademy.reviews.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Builder.Default;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -16,6 +20,8 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Getter
 @Setter
+@DynamicInsert
+@DynamicUpdate
 @Table(name = "reviews")
 public class Review {
   @Id
@@ -25,7 +31,8 @@ public class Review {
   private Integer id;
 
   @Column(name = "user_name")
-  private String userName = "Anonymous";
+//  @ColumnDefault("'Anonymous'")
+  private String userName;
 
   @Min(1)
   @Max(5)
