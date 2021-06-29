@@ -8,7 +8,6 @@ const SitesIndex = props => {
   const fetchSites = async () => {
     try {
       const response = await fetch("api/v1/sites")
-      console.log("inside index fetch")
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error(errorMessage)

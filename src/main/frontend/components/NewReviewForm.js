@@ -32,6 +32,7 @@ const NewReviewForm = (props) => {
     })
     setErrors({})
   }
+
   const handleSubmit = (event) => {
     event.preventDefault()
     if (validForSubmission()) {
@@ -39,6 +40,7 @@ const NewReviewForm = (props) => {
       clearForm()
     }
   }
+
   const handleInputChange = event => {
     setFormPayload({
       ...formPayload,

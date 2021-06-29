@@ -43,7 +43,7 @@ const SiteShow = (props) => {
   const postReviewForm = async (formPayload) => {
     try {
       const response = await fetch(
-        `/api/v1/reviews/${siteId}/addreview`, {
+        `/api/v1/sites/${siteId}/reviews`, {
         method: 'POST',
         headers: new Headers({
           'Content-Type': 'application/json'
@@ -96,14 +96,13 @@ const SiteShow = (props) => {
     />
   }
 
-
-    const { id, name, description, imgUrl, url } = site
+  const { id, name, description, imgUrl, url } = site
 
   return (
     <div>
       <a href={url}><h1>{name}</h1></a>
       <img src={imgUrl} />
-      <a href={url}><p>Visit the Site</p></a>
+      <a href={url} target="_blank"><p>Visit the Site</p></a>
       <p><strong>Description:</strong> {description}</p>
       {successMessageTag}
       <button type="button" className="button" onClick={handleFormButtonClick}>Add A Review</button>
