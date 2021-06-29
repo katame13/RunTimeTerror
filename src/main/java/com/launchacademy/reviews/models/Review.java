@@ -20,8 +20,6 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Getter
 @Setter
-@DynamicInsert
-@DynamicUpdate
 @Table(name = "reviews")
 public class Review {
   @Id
@@ -30,9 +28,8 @@ public class Review {
   @Column(name="id", nullable = false, unique = true)
   private Integer id;
 
-  @Column(name = "user_name")
-//  @ColumnDefault("'Anonymous'")
-  private String userName;
+  @Column(name = "user_name", insertable = false)
+  private String userName = "Anonymous";
 
   @Min(1)
   @Max(5)

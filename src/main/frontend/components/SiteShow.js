@@ -53,7 +53,6 @@ const SiteShow = (props) => {
       if (!response.ok) {
         if (response.status === 422) {
           const body = await response.json()
-          console.log(body.errors)
           return setFormErrors(body.errors)
         } else {
           const errorMessage = `${response.status} (${response.statusText})`

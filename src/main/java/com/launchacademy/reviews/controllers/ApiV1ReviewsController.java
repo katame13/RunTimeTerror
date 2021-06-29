@@ -41,9 +41,7 @@ public class ApiV1ReviewsController {
     @PostMapping("/{id}/addreview")
   public ResponseEntity createReview(@PathVariable Integer id, @RequestBody @Valid Review review,
     BindingResult bindingResult) {
-    System.out.println("inside addReview");
     if (bindingResult.hasErrors()) {
-      System.out.println("has errors");
       Map<String, Map<String, String>> errorsData = new HashMap<>();
       Map<String, String> errorsMap = new HashMap<>();
       for (FieldError error : bindingResult.getFieldErrors()) {
@@ -52,7 +50,6 @@ public class ApiV1ReviewsController {
       errorsData.put("errors", errorsMap);
       return new ResponseEntity<Object>(errorsData, HttpStatus.UNPROCESSABLE_ENTITY);
     } else {
-      System.out.println("happy path");
       Site site = siteService.findById(id);
       review.setSite(site);
       Map<String, Review> reviewData = new HashMap<>();

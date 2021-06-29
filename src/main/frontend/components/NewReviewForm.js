@@ -33,7 +33,6 @@ const NewReviewForm = (props) => {
     setErrors({})
   }
   const handleSubmit = (event) => {
-    console.log(formPayload)
     event.preventDefault()
     if (validForSubmission()) {
       props.postReviewForm(formPayload)
@@ -46,7 +45,7 @@ const NewReviewForm = (props) => {
       [event.currentTarget.name]: event.currentTarget.value
     })
   }
-  console.log(props.errors);
+  
   return (
     <form className="review" onSubmit={handleSubmit}>
       <ErrorList errors={{...errors, ...props.errors}}/>
