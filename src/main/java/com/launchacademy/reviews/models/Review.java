@@ -1,9 +1,13 @@
 package com.launchacademy.reviews.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Builder.Default;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -24,7 +28,7 @@ public class Review {
   @Column(name="id", nullable = false, unique = true)
   private Integer id;
 
-  @Column(name = "user_name")
+  @Column(name = "user_name", insertable = false)
   private String userName = "Anonymous";
 
   @Min(1)
