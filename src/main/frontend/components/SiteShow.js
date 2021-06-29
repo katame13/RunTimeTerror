@@ -22,6 +22,16 @@ const SiteShow = (props) => {
     }
   }
 
+const deleteSite = async () => {
+try{
+ let response = await fetch(`/api/v1/sites/${siteId}/delete`, {
+ method: "DELETE",
+ });
+}catch(err){
+}
+}
+
+
   useEffect(() => {
     fetchSite()
   }, [])
