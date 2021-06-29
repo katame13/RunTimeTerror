@@ -134,8 +134,6 @@ let redirect;
     />
   }
 
-  const { id, name, description, imgUrl, url } = site
-
   return (
     <div>
       <a href={url}><h1>{name}</h1></a>
