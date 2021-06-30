@@ -139,8 +139,6 @@ const SiteShow = (props) => {
     return <Redirect push to= "/sites" />;
   }
 
-  const { id, name, description, imgUrl, url, category } = site
-
   return (
     <div>
       <a href={url}>
