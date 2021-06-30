@@ -34,8 +34,8 @@ private ReviewRepository reviewRepository;
     return siteRepo.save(site);
   }
 
-  public void delete(int id){
-  Site site = siteRepo.findById(id).get();
-  siteRepo.delete(site);
+  public void delete(int id) {
+    Site site = siteRepo.findById(id).get();
+    siteRepo.delete(site);
   }
 }

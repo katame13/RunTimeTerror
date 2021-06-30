@@ -57,7 +57,7 @@ public class ApiV1SitesController {
   }
 
   @DeleteMapping("/{id}")
-  public void delete(@PathVariable int id){
+  public void delete(@PathVariable int id) {
     siteService.delete(id);
   }
 
