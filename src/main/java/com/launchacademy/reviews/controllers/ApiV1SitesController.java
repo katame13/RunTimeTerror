@@ -1,14 +1,17 @@
 package com.launchacademy.reviews.controllers;
 
 import com.launchacademy.reviews.models.Category;
+import com.launchacademy.reviews.models.Review;
 import com.launchacademy.reviews.models.Site;
 import com.launchacademy.reviews.services.CategoriesService;
+import com.launchacademy.reviews.services.ReviewService;
 import com.launchacademy.reviews.services.SiteService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import java.util.Properties;
 import javax.validation.Valid;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +27,14 @@ public class ApiV1SitesController {
 
   private SiteService siteService;
   private CategoriesService categoriesService;
+  private ReviewService reviewService;
 
   @Autowired
-  public ApiV1SitesController(SiteService siteService, CategoriesService categoriesService) {
+  public ApiV1SitesController(SiteService siteService, CategoriesService categoriesService,
+      ReviewService reviewService) {
     this.siteService = siteService;
-    this.categoriesService =categoriesService;
+    this.categoriesService = categoriesService;
+    this.reviewService = reviewService;
   }
 
   @GetMapping
@@ -39,9 +45,9 @@ public class ApiV1SitesController {
   }
 
   @GetMapping("/{id}")
-  public Map<String, Site> getSite(@PathVariable int id){
+  public Map<String, Site> getSite(@PathVariable int id) {
     Optional<Site> site = siteService.optionalFindById(id);
-    if(site.isEmpty()){
+    if (site.isEmpty()) {
       throw new SiteNotFoundException();
     }
     Map<String, Site> siteMap = new HashMap<>();
@@ -49,13 +55,18 @@ public class ApiV1SitesController {
     return siteMap;
   }
 
+  @DeleteMapping("/{id}")
+  public void delete(@PathVariable int id) {
+    siteService.delete(id);
+  }
+
   @PostMapping
-  public ResponseEntity addSite(@RequestBody @Valid Site site, BindingResult bindingResult){
-    if(bindingResult.hasErrors()){
+  public ResponseEntity addSite(@RequestBody @Valid Site site, BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
       List<FieldError> errorList = bindingResult.getFieldErrors();
       Map<String, String> errorFields = new HashMap<>();
-      for(FieldError fieldError : errorList){
-        errorFields.put(fieldError.getField(),fieldError.getDefaultMessage());
+      for (FieldError fieldError : errorList) {
+        errorFields.put(fieldError.getField(), fieldError.getDefaultMessage());
       }
       Map<String, Map<String, String>> errorMap = new HashMap<>();
       errorMap.put("errors", errorFields);
@@ -108,4 +119,25 @@ public class ApiV1SitesController {
     }
   }
 
+
+  @PostMapping("/{id}/reviews")
+  public ResponseEntity createReview(@PathVariable Integer id, @RequestBody @Valid Review review,
+      BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+      Map<String, Map<String, String>> errorsData = new HashMap<>();
+      Map<String, String> errorsMap = new HashMap<>();
+      for (FieldError error : bindingResult.getFieldErrors()) {
+        errorsMap.put(error.getField(), error.getDefaultMessage());
+      }
+      errorsData.put("errors", errorsMap);
+      return new ResponseEntity<Object>(errorsData, HttpStatus.UNPROCESSABLE_ENTITY);
+    } else {
+      Site site = siteService.findById(id);
+      review.setSite(site);
+      Map<String, Review> reviewData = new HashMap<>();
+      reviewService.save(review);
+      reviewData.put("review", review);
+      return new ResponseEntity<Object>(reviewData, HttpStatus.CREATED);
+    }
+  }
 }
