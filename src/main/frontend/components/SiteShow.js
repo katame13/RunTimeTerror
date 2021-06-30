@@ -62,8 +62,8 @@ const SiteShow = (props) => {
       }
       setSuccessfulApplicationStatus(true)
       setShowForm(false)
-    } catch (err) {
-      console.error(`Error in fetch: ${err.message}`)
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
     }
   }
 
