@@ -35,6 +35,7 @@ const CategoryField = props =>{
       <label htmlFor="categoryId">Category:</label>
       <select name ="categoryId" id = "categoryId" onChange={props.handleInputChange}
       value = {props.categoryId}>
+        <option value=''></option>
         {categoryOptions}
       </select>
     </div>
