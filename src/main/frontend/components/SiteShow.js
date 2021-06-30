@@ -90,10 +90,10 @@ const SiteShow = (props) => {
           throw error;
         }
       }
-      setSuccessfulApplicationStatus(true);
-      setShowForm(false);
-    } catch (err) {
-      console.error(`Error in fetch: ${err.message}`);
+      setSuccessfulApplicationStatus(true)
+      setShowForm(false)
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
     }
   };
 
