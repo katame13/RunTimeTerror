@@ -8,6 +8,7 @@ import SitesIndex from "./SitesIndex";
 import SiteShow from "./SiteShow";
 import AddNewSiteForm from "./AddNewSiteForm"
 import CategoryShow from "./CategoryShow"
+import "../main.scss"
 
 const App = (props) => {
   useEffect(() => {
