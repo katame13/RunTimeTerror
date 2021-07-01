@@ -5,7 +5,6 @@ import SitesIndex from "./SitesIndex";
 import SiteShow from "./SiteShow";
 import AddNewSiteForm from "./AddNewSiteForm"
 import CategoryShow from "./CategoryShow"
-import logo from "../static/images/loveReviewsLogo.png"
 
 const NavBar = props => {
   const [categories, setCategories] = useState([])
@@ -46,7 +45,7 @@ const NavBar = props => {
   return(
     <div>
       <div>
-        <img src= {logo} ></img>
+        <img src="https://i.imgur.com/Ga56bHl.jpg"/>
       </div>
 
       <div>

@@ -34,9 +34,11 @@ const SitesIndex = props => {
   })
 
   return (
-    <div>
-      <h1>LOVE REVIEWS</h1>
+  <div>
+      <h1 className="site-tile-container-header">LOVE REVIEWS</h1>
+      <div className="site-tile-container">
       {siteTiles}
+      </div>
     </div>
   )
 }
