@@ -5,7 +5,6 @@ import SitesIndex from "./SitesIndex";
 import SiteShow from "./SiteShow";
 import AddNewSiteForm from "./AddNewSiteForm";
 import CategoryShow from "./CategoryShow";
-import "../static/styling/NavBarStyling.scss"
 
 const NavBar = props => {
   const [categories, setCategories] = useState([])

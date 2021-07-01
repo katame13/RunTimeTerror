@@ -5,6 +5,8 @@ import $ from "jquery";
 import {Route, BrowserRouter} from "react-router-dom"
 import NavBar from "./NavBar";
 import "../static/styling/main.scss"
+import "../static/styling/NavBarStyling.scss"
+
 
 const App = (props) => {
   useEffect(() => {
