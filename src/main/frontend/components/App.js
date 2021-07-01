@@ -4,6 +4,7 @@ import "foundation-sites";
 import $ from "jquery";
 import {Route, BrowserRouter} from "react-router-dom"
 import NavBar from "./NavBar";
+import "../static/styling/main.scss"
 
 const App = (props) => {
   useEffect(() => {

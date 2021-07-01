@@ -1,0 +1,113 @@
+$logo-purple: #738adc;
+$logo-hot-pink: #d3175a;
+$logo-light-pink: #facae2;
+$logo-blue: #80c9f0;
+$logo-dark-purple: #7c5a97;
+$dark-magenta: #560238;
+
+body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: $logo-purple;
+  background-color: $logo-hot-pink;
+}
+
+:any-link {
+  text-decoration: none;
+}
+
+a {
+  color: $dark-magenta;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  width: 100%;
+  padding: 30px 5%;
+}
+
+.site-tile-container-header {
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 50px;
+}
+
+.site-tile-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: auto;
+  margin: 5% auto;
+  padding: 1rem 2rem;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.site-tile {
+  width: 50%;
+  background-color: $logo-light-pink;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+  height: fit-content;
+  padding-bottom: 10px;
+  width: 300px;
+  margin: 0 2% 30px 2%;
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.16), 0 4px 7px rgba(0, 0, 0, 0.23);
+  text-align: center;
+  color: $dark-magenta;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  img {
+    width: 85%;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+  }
+  h2 {
+    padding: 5px 10px 5px 10px;
+  }
+
+  h4,
+  h5 {
+    padding: 5px 10px 5px 10px;
+  }
+}
+
+review-container {
+  display: flex;
+  width: auto;
+  margin: 5% auto;
+  padding: 1rem 2rem;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+review-tile {
+  width: 80%;
+}
+
+form {
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  width: 60%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}

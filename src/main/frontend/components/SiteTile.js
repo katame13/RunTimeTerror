@@ -18,17 +18,14 @@ const SiteTile = (props) => {
   aveRelationship = sumRelationship / reviewsLength
 
   return (
-    <div>
-      <div>
+    <div className="site-tile">
         <Link to={`/sites/${id}`}>
           <img src={imgUrl}></img>
-          <h3>{name}</h3>
+          <h2>{name}</h2>
         </Link>
-        <h3>Average Rating: {aveRating.toPrecision(3)}</h3>
-        <h3>Average Length of Relationship: {aveRelationship.toPrecision(
-          3)}</h3>
-        <p>{description}</p>
-      </div>
+        <h4>Average Rating: {aveRating.toPrecision(3)}</h4>
+        <h5>Average Relationship Length: {aveRelationship.toPrecision(
+          3)} weeks</h5>
     </div>
   )
 }
