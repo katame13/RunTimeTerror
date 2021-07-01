@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react"
-import { Switch, Route, Link, Redirect } from "react-router-dom"
+import React, { useState, useEffect } from "react";
+import { Switch, Route, Link, Redirect } from "react-router-dom";
 
 import SitesIndex from "./SitesIndex";
 import SiteShow from "./SiteShow";
-import AddNewSiteForm from "./AddNewSiteForm"
-import CategoryShow from "./CategoryShow"
-import logo from "../static/images/loveReviewsLogo.png"
+import AddNewSiteForm from "./AddNewSiteForm";
+import CategoryShow from "./CategoryShow";
+import "../static/styling/NavBarStyling.scss"
 
 const NavBar = props => {
   const [categories, setCategories] = useState([])
@@ -39,21 +39,27 @@ const NavBar = props => {
 
   categoryLinks.unshift(
     <li key={0}>
-      <Link to={`/sites`} >Home</Link>
+      <Link to={`/sites`}>Home</Link>
     </li>
   )
 
   return(
-    <div>
-      <div>
-        <img src= {logo} ></img>
+    <div className="">
+      <div className="header">
+        <div>
+          <Link to={`/sites`} >
+            <img className="logo" src={"https://i.imgur.com/JhJL5g1.png"} ></img>
+          </Link>
+        </div>
+       
       </div>
 
-      <div>
-        <ul className="nav-link">
-          {categoryLinks}
-        </ul>
-      </div>
+      <div className="categories">
+          <ul>
+           {categoryLinks}
+          </ul>
+       </div>
+
 
       <Switch>
         <Route exact path="/" >

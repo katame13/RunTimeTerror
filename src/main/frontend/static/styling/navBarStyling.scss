@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  width: 100%;
+  height: 500px;
+  background: url("https://i.imgur.com/YvvSBsy.jpg");
+  background-position: right ;
+  background-size: cover;
+  opacity: 100%;
+}
+
+.hero::before{
+
+}
+
+.logo {
+  position:relative;
+  display: flex;
+  opacity: 100%;
+  width : 200px;
+}
+
+.hero{
+  display: flex;
+  opacity: 75%;
+  width: 100%;
+  height: 50%;
+}
+
+.categories{
+  position: relative;
+  display: flex;
+  justify-content: left;
+}
