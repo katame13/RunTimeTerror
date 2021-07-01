@@ -1,7 +1,9 @@
 import React,{useEffect, useState} from "react"
+import { useLocation } from "react-router-dom"
 import SiteTile from "./SiteTile"
 
 const CategoryShow = (props) =>{
+  let location = useLocation();
   const [category, setCategory] = useState( {sites: []})
 
   const fetchCategory = async() => {
@@ -23,7 +25,9 @@ const CategoryShow = (props) =>{
 
   useEffect(() =>{
     fetchCategory()
-  },[])
+  },[location.pathname])
+
+
 
   if(!category) {
     return(

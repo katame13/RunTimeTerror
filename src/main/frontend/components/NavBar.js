@@ -5,6 +5,7 @@ import SitesIndex from "./SitesIndex";
 import SiteShow from "./SiteShow";
 import AddNewSiteForm from "./AddNewSiteForm"
 import CategoryShow from "./CategoryShow"
+import logo from "../static/images/loveReviewsLogo.png"
 
 const NavBar = props => {
   const [categories, setCategories] = useState([])
@@ -45,8 +46,15 @@ const NavBar = props => {
   return(
     <div>
       <div>
-        {categoryLinks}
+        <img src= {logo} ></img>
       </div>
+
+      <div>
+        <ul className="nav-link">
+          {categoryLinks}
+        </ul>
+      </div>
+
       <Switch>
         <Route exact path="/" >
           <Redirect to="/sites" />
