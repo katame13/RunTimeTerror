@@ -27,7 +27,9 @@
 }
 
 .categories{
-  position: relative;
   display: flex;
-  justify-content: left;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  background: darkorange;
 }
