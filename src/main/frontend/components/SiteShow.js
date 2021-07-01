@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import ReviewTile from "./ReviewTile";
+import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
+
 import NewReviewForm from "./NewReviewForm";
+import ReviewTile from "./ReviewTile";
 
 const SiteShow = (props) => {
   const [site, setSite] = useState({ reviews: [] });
@@ -18,9 +20,9 @@ const SiteShow = (props) => {
     try {
       const response = await fetch(`/api/v1/sites/${siteId}`);
       if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`;
-        const error = new Error(errorMessage);
-        throw error;
+        const errorMessage = `${response.status} (${response.statusText})`
+        const error = new Error(errorMessage)
+        throw (error)
       }
       const siteData = await response.json();
       setSite(siteData.site);
@@ -149,6 +151,7 @@ const SiteShow = (props) => {
       <p>
         <strong>Description:</strong> {description}
       </p>
+      <Link to={`/sites/edit/${siteId}`}>Edit the Site</Link>
       <div>
         <button type="button" onClick={handleDeleteClick}>
           Delete Site{" "}
