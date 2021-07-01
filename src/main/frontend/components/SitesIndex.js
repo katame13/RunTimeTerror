@@ -13,13 +13,13 @@ const SitesIndex = props => {
         const error = new Error(errorMessage)
         throw (error)
       }
-
       const sitesData = await response.json()
       setSites(sitesData.sites)
-    } catch (err) {
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
     }
-    console.error(`Error in fetch: ${err.message}`)
   }
+
   useEffect(() => {
     fetchSites()
   }, [])
