@@ -5,7 +5,7 @@ import SitesIndex from "./SitesIndex";
 import SiteShow from "./SiteShow";
 import AddNewSiteForm from "./AddNewSiteForm";
 import CategoryShow from "./CategoryShow";
-import "../static/styling/NavBarStyling.scss"
+import EditSiteForm from "./EditSiteForm";
 
 const NavBar = props => {
   const [categories, setCategories] = useState([])
@@ -32,7 +32,7 @@ const NavBar = props => {
   const categoryLinks = categories.map(category => {
     return (
 
-        <Link key={category.id} to={`/categories/${category.id}`} style={{textDecoration: 'none'}}>{category.name}</Link>
+        <Link key={category.id} to={`/categories/${category.id}`} className="category" style={{textDecoration: 'none'}}>{category.name}</Link>
     )
   })
 
@@ -61,8 +61,10 @@ const NavBar = props => {
         </Route>
         <Route exact path="/sites" component={SitesIndex}/>
         <Route exact path="/sites/new" component={AddNewSiteForm}/>
+        <Route exact path="/sites/edit/:id" component={EditSiteForm} />
         <Route exact path="/sites/:id" component={SiteShow}/>
         <Route exact path="/categories/:id" component={CategoryShow}/>
+        <Route exact path="/sites/edit/:id" component={EditSiteForm}/>
       </Switch>
     </div>
   )

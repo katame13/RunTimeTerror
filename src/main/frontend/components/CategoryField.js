@@ -24,16 +24,16 @@ const CategoryField = props =>{
 
   const categoryOptions = category.map(type =>{
     return (
-      <option key={type.id} value={type.id}>
+      <option className="formDropText" key={type.id} value={type.id}>
         {type.name}
       </option>
     )
   })
 
   return(
-    <div>
-      <label htmlFor="categoryId">Category:</label>
-      <select name ="categoryId" id = "categoryId" onChange={props.handleInputChange}
+    <div className="formDiv">
+      <label className="formLabelDropBox" htmlFor="categoryId">Category:</label>
+      <select className="formDropBox" name ="categoryId" id = "categoryId" onChange={props.handleInputChange}
       value = {props.categoryId}>
         <option value=''></option>
         {categoryOptions}

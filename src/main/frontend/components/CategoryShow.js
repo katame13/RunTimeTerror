@@ -48,9 +48,13 @@ const CategoryShow = (props) =>{
   })
 
   return(
-    <div>
+    <div >
+      <div className="site-tile-container-header">
       <h1>{category.name}</h1>
+      </div>
+      <div className="site-tile-container">
       {siteTiles}
+      </div>
     </div>
   )
 }

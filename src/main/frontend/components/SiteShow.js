@@ -141,28 +141,47 @@ const SiteShow = (props) => {
 
   return (
     <div>
+    <div className ="show-container">
+
+      <div className="show-image">
+      <img src={imgUrl} />
+      </div>
+
+      <div className="site-info">
       <a href={url}>
         <h1>{name}</h1>
       </a>
-      <img src={imgUrl} />
-      <a href={url} target="_blank">
-        <p>Visit the Site</p>
-      </a>
+      <div className="site-story">
       <p>
         <strong>Description:</strong> {description}
       </p>
-      <Link to={`/sites/edit/${siteId}`}>Edit the Site</Link>
-      <div>
-        <button type="button" onClick={handleDeleteClick}>
-          Delete Site{" "}
+        <button type="button" className="button" onClick={handleFormButtonClick}>
+        Add Review
         </button>
+        <button>
+        <a href={url} target="_blank">
+        Visit Site
+        </a>
+        </button>
+        <Link to={`/sites/edit/${siteId}`}>
+        <button type="button">
+        Edit Site
+        </button>
+        </Link>
+        <button type="button" onClick={handleDeleteClick}>
+        Delete Site{" "}
+        </button>
+        {successMessageTag}
+        {newReviewForm}
       </div>
-      {successMessageTag}
-      <button type="button" className="button" onClick={handleFormButtonClick}>
-        Add A Review
-      </button>
-      {newReviewForm}
-      {reviewTiles}
+      </div>
+      </div>
+      <div>
+        <h4 className="review-header">Reviews</h4>
+        <div className="review-container">
+        {reviewTiles}
+        </div>
+      </div>
     </div>
   );
 };
