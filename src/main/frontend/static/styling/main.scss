@@ -10,7 +10,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: Georgia, "Times New Roman", Times, serif;
-  color: $logo-purple;
+  color: white;
   background-color: $logo-hot-pink;
 }
 
@@ -39,19 +39,26 @@ main {
 }
 
 .site-tile-container-header {
+  text-align: left;
   margin-bottom: 20px;
-  text-align: center;
   color: white;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 50px;
+  font-size: 25px;
+  padding-top: 25px;
+  padding-left: 25px;
+  a {
+    text-decoration: none;
+    color: white;
+  }
 }
 
 .site-tile-container {
+  text-align: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   width: auto;
-  margin: 5% auto;
+  margin: 3% auto;
   padding: 1rem 2rem;
   border-radius: 2px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -91,18 +98,6 @@ main {
   }
 }
 
-review-container {
-  display: flex;
-  width: auto;
-  margin: 5% auto;
-  padding: 1rem 2rem;
-  border-radius: 2px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
-review-tile {
-  width: 80%;
-}
-
 form {
   border-radius: 2px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -112,75 +107,199 @@ form {
   padding: 1rem;
 }
 
-
 .header {
   display: flex;
   width: 100%;
   height: 20rem;
   background: url("https://i.imgur.com/YvvSBsy.jpg");
-  background-position: right ;
+  background-position: right;
   background-size: cover;
   opacity: 100%;
 }
 
 .logo {
-  position:relative;
+  position: relative;
   display: flex;
   opacity: 100%;
-  width : 20rem;
+  width: 20rem;
 }
 
-.hero{
+.hero {
   display: flex;
   opacity: 75%;
   width: 100%;
   height: 50%;
 }
 
-.categories{
+.categories {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 30px;
   background: darkorange;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 25px;
+  a {
+    color: white;
+  }
 }
 
-.formDiv{
-  padding: .5rem;
+.formDiv {
+  padding: 0.5rem;
   display: flex;
 }
 
-.formField{
+.formField {
   justify-content: right;
   width: 65%;
   font-size: large;
 }
 
-.formLabel{
+.formLabel {
   justify-content: left;
   width: 8rem;
   color: #80c9f0;
   font-size: large;
 }
 
-.formLabelDropBox{
+.formLabelDropBox {
   width: 7rem;
   color: #80c9f0;
   justify-content: left;
   font-size: large;
 }
 
-.formDropText{
+.formDropText {
   font-size: large;
 }
 
-.formDropBox{
+.formDropBox {
   width: 10rem;
   font-size: large;
 }
 
-.button{
+.button {
   background-color: #80c9f0;
   color: #000;
-  font-size: .9rem;
+  font-size: 0.9rem;
+}
+
+.category {
+  &:hover {
+    color: $logo-dark-purple;
+  }
+}
+
+.show-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 3%;
+
+  h1 {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 4px solid white;
+  }
+}
+.show-image {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border: $logo-light-pink solid 10px;
+  }
+}
+
+.site-info {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: white;
+  a {
+    color: white;
+  }
+
+  span {
+    color: gray;
+  }
+
+  p {
+    margin-bottom: 7px;
+    font-size: 22px;
+  }
+
+  button {
+    background-color: darkorange;
+    color: white;
+    transition: 0.5s;
+    width: 150px;
+    padding: 18px 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 10px;
+
+    &:hover {
+      background-color: $logo-dark-purple;
+      color: #fff;
+    }
+  }
+}
+
+.site-story {
+  h6 {
+    font-size: 22px;
+  }
+
+  p {
+    color: white;
+    font-size: 20px;
+  }
+}
+.review-header {
+  text-align: center;
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 35px;
+}
+.review-container {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: auto;
+  margin: 3% auto;
+  padding: 1rem 2rem;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  text-align: center;
+}
+.review-tile {
+  margin: 20px;
+  padding: 1rem 1rem;
+  justify-content: center;
+  background-color: $logo-light-pink;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+  height: fit-content;
+  padding-bottom: 10px;
+  width: auto;
+  max-width: 450px;
+  margin: 30 10% 30px 10%;
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.16), 0 4px 7px rgba(0, 0, 0, 0.23);
+  text-align: center;
+  color: $dark-magenta;
+
+  &:hover {
+    transform: scale(1.03);
+  }
 }

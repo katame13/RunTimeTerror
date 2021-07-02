@@ -47,9 +47,9 @@ const NewReviewForm = (props) => {
       [event.currentTarget.name]: event.currentTarget.value
     })
   }
-  
+
   return (
-    <form className="review" onSubmit={handleSubmit}>
+    <form className="review-tile" onSubmit={handleSubmit}>
       <ErrorList errors={{...errors, ...props.errors}}/>
       <div>
         <label htmlFor="userName">UserName: </label>
