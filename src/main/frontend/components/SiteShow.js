@@ -155,8 +155,11 @@ const SiteShow = (props) => {
       <p>
         <strong>Description:</strong> {description}
       </p>
+        <button type="button" className="button" onClick={handleFormButtonClick}>
+        Add Review
+        </button>
         <button>
-        <a href={url}>
+        <a href={url} target="_blank">
         Visit Site
         </a>
         </button>
@@ -168,21 +171,16 @@ const SiteShow = (props) => {
         <button type="button" onClick={handleDeleteClick}>
         Delete Site{" "}
         </button>
-        <button type="button" className="button" onClick={handleFormButtonClick}>
-        Add A Review
-        </button>
-
+        {successMessageTag}
+        {newReviewForm}
       </div>
       </div>
       </div>
       <div>
-        {successMessageTag}
-        {newReviewForm}
         <h4 className="review-header">Reviews</h4>
         <div className="review-container">
         {reviewTiles}
         </div>
-
       </div>
     </div>
   );
