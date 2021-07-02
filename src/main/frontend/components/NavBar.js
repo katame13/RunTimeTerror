@@ -6,6 +6,7 @@ import SiteShow from "./SiteShow";
 import AddNewSiteForm from "./AddNewSiteForm";
 import CategoryShow from "./CategoryShow";
 import EditSiteForm from "./EditSiteForm";
+import NotFoundPage from "./NotFoundPage"
 
 const NavBar = props => {
   const [categories, setCategories] = useState([])
@@ -64,6 +65,10 @@ const NavBar = props => {
         <Route exact path="/sites/:id" component={SiteShow}/>
         <Route exact path="/categories/:id" component={CategoryShow}/>
         <Route exact path="/sites/edit/:id" component={EditSiteForm}/>
+        <Route exact path="/oops" component={NotFoundPage} />
+        <Route>
+          <Redirect to="/oops" />
+        </Route>
       </Switch>
     </div>
   )
