@@ -25,7 +25,7 @@ public class NotFoundController implements ErrorController{
       }
       return "error";
     }
-    
+
     public String getErrorPath() {
       return PATH;
     }
