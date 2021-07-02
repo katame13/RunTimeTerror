@@ -5,6 +5,7 @@ import SitesIndex from "./SitesIndex";
 import SiteShow from "./SiteShow";
 import AddNewSiteForm from "./AddNewSiteForm";
 import CategoryShow from "./CategoryShow";
+import EditSiteForm from "./EditSiteForm";
 
 const NavBar = props => {
   const [categories, setCategories] = useState([])
@@ -60,6 +61,7 @@ const NavBar = props => {
         </Route>
         <Route exact path="/sites" component={SitesIndex}/>
         <Route exact path="/sites/new" component={AddNewSiteForm}/>
+        <Route exact path="/sites/edit/:id" component={EditSiteForm} />
         <Route exact path="/sites/:id" component={SiteShow}/>
         <Route exact path="/categories/:id" component={CategoryShow}/>
       </Switch>

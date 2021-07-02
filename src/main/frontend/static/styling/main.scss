@@ -164,7 +164,7 @@ form {
 }
 
 .formLabelDropBox{
-  width: 5.5rem;
+  width: 7rem;
   color: #80c9f0;
   justify-content: left;
   font-size: large;
@@ -177,4 +177,10 @@ form {
 .formDropBox{
   width: 10rem;
   font-size: large;
+}
+
+.button{
+  background-color: #80c9f0;
+  color: #000;
+  font-size: .9rem;
 }

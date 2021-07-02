@@ -106,7 +106,7 @@ const AddNewSiteForm = (props) => {
       <div className="formDiv">
         <label className="formLabel" htmlFor="imgUrl">Image URL: </label>
         <input
-        className="formField"
+          className="formField"
           name="imgUrl"
           id="imgUrl"
           type="text"
@@ -133,7 +133,7 @@ const AddNewSiteForm = (props) => {
       </div>
 
       <div className="formDiv">
-        <input type="submit" value="Add New Site" />
+        <input className="button" type="submit" value="Add New Site" />
       </div>
 
     </form>
