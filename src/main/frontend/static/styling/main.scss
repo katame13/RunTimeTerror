@@ -99,12 +99,13 @@ main {
 }
 
 form {
-  border-radius: 2px;
+  border-radius: 5px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   width: 60%;
   max-width: 800px;
   margin: 2rem auto;
   padding: 1rem;
+  background-color: $logo-light-pink;
 }
 
 .header {
@@ -158,13 +159,13 @@ form {
 .formLabel {
   justify-content: left;
   width: 8rem;
-  color: #80c9f0;
+  color: $dark-magenta;
   font-size: large;
 }
 
 .formLabelDropBox {
   width: 7rem;
-  color: #80c9f0;
+  color: $dark-magenta;
   justify-content: left;
   font-size: large;
 }
@@ -179,9 +180,24 @@ form {
 }
 
 .button {
-  background-color: #80c9f0;
-  color: #000;
+  background-color: darkorange;
+  color: white;
   font-size: 0.9rem;
+  transition: 0.5s;
+  width: 100px;
+  padding: 10px 5px;
+  border-radius: 5px;
+  margin-top: 10px;
+  outline: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 10px;
+
+  &:hover {
+    background-color: $logo-dark-purple;
+    color: #fff;
+  }
 }
 
 .category {
@@ -302,4 +318,8 @@ form {
   &:hover {
     transform: scale(1.03);
   }
+}
+
+.question {
+  color: $dark-magenta;
 }

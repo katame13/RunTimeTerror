@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from "react-router-dom";
 
 import SiteTile from "./SiteTile"
 
@@ -37,7 +38,15 @@ const SitesIndex = props => {
   <div>
       <div className="site-tile-container">
       {siteTiles}
+      <div className = "site-info">
+        <Link to={`/sites/new`}>
+        <button type="button">
+        Add Site
+        </button>
+        </Link>
+        </div>
       </div>
+
     </div>
   )
 }

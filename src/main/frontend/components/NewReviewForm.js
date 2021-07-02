@@ -51,9 +51,10 @@ const NewReviewForm = (props) => {
   return (
     <form className="review-tile" onSubmit={handleSubmit}>
       <ErrorList errors={{...errors, ...props.errors}}/>
-      <div>
-        <label htmlFor="userName">UserName: </label>
+      <div className="formDiv">
+        <label className="formLabel" htmlFor="userName">Name: </label>
         <input
+          className="formField"
           name="userName"
           id="userName"
           type="text"
@@ -61,19 +62,21 @@ const NewReviewForm = (props) => {
           onChange={handleInputChange}
         />
       </div>
-      <div>
-        <label htmlFor="rating">Rating: </label>
+      <div className="formDiv">
+        <label className="formLabel" htmlFor="rating">Rating: </label>
         <input
+          className="formField"
           name="rating"
           id="rating"
-          type="number"
+          type="number" min="1" max="5"
           value={formPayload.rating}
           onChange={handleInputChange}
         />
       </div>
-      <div>
-        <label htmlFor="review">Review: </label>
-        <input
+      <div className="formDiv">
+        <label className="formLabel" htmlFor="review">Review: </label>
+        <textarea
+          className="formField"
           name="review"
           id="review"
           type="text"
@@ -81,15 +84,20 @@ const NewReviewForm = (props) => {
           onChange={handleInputChange}
         />
       </div>
-      <div>
-        <label htmlFor="longestRelationship">Longest Relationship: </label>
+      <div className="formDiv">
+        <label className="formLabel" htmlFor="longestRelationship"></label>
+        <span>
+        <span className="question">What was your longest relationship you had with someone you met on the site? Please enter in weeks.</span>
         <input
+          className="formField"
           name="longestRelationship"
           id="longestRelationship"
           type="number"
           value={formPayload.longestRelationship}
           onChange={handleInputChange}
         />
+
+        </span>
       </div>
       <input className="button" type="submit" value="Submit"/>
     </form>
