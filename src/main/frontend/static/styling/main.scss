@@ -110,7 +110,7 @@ form {
 .header {
   display: flex;
   width: 100%;
-  height: 500px;
+  height: 20rem;
   background: url("https://i.imgur.com/YvvSBsy.jpg");
   background-position: right;
   background-size: cover;
@@ -121,7 +121,7 @@ form {
   position: relative;
   display: flex;
   opacity: 100%;
-  width: 200px;
+  width: 20rem;
 }
 
 .hero {
@@ -142,6 +142,46 @@ form {
   a {
     color: white;
   }
+}
+
+.formDiv {
+  padding: 0.5rem;
+  display: flex;
+}
+
+.formField {
+  justify-content: right;
+  width: 65%;
+  font-size: large;
+}
+
+.formLabel {
+  justify-content: left;
+  width: 8rem;
+  color: #80c9f0;
+  font-size: large;
+}
+
+.formLabelDropBox {
+  width: 7rem;
+  color: #80c9f0;
+  justify-content: left;
+  font-size: large;
+}
+
+.formDropText {
+  font-size: large;
+}
+
+.formDropBox {
+  width: 10rem;
+  font-size: large;
+}
+
+.button {
+  background-color: #80c9f0;
+  color: #000;
+  font-size: 0.9rem;
 }
 
 .category {

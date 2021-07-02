@@ -33,12 +33,12 @@ const NavBar = props => {
   const categoryLinks = categories.map(category => {
     return (
 
-        <Link key={category.id} to={`/categories/${category.id}`} className="category">{category.name}</Link>
+        <Link key={category.id} to={`/categories/${category.id}`} className="category" style={{textDecoration: 'none'}}>{category.name}</Link>
     )
   })
 
   categoryLinks.unshift(
-      <Link key={0} to={`/sites`}>Home</Link>
+      <Link key={0} to={`/sites`} style={{textDecoration: 'none'}}>Home</Link>
   )
 
   return (
@@ -62,6 +62,7 @@ const NavBar = props => {
         </Route>
         <Route exact path="/sites" component={SitesIndex}/>
         <Route exact path="/sites/new" component={AddNewSiteForm}/>
+        <Route exact path="/sites/edit/:id" component={EditSiteForm} />
         <Route exact path="/sites/:id" component={SiteShow}/>
         <Route exact path="/categories/:id" component={CategoryShow}/>
         <Route exact path="/sites/edit/:id" component={EditSiteForm}/>
