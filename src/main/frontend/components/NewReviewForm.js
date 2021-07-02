@@ -75,7 +75,7 @@ const NewReviewForm = (props) => {
       </div>
       <div className="formDiv">
         <label className="formLabel" htmlFor="review">Review: </label>
-        <input
+        <textarea
           className="formField"
           name="review"
           id="review"

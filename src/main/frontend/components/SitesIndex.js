@@ -36,6 +36,11 @@ const SitesIndex = props => {
   return (
   <div>
       <div className="site-tile-container">
+      {/* <Link to={`/sites/new`}>
+        <button type="button">
+        Add Site
+        </button>
+        </Link> */}
       {siteTiles}
       </div>
     </div>
