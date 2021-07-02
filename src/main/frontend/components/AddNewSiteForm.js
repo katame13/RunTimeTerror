@@ -78,9 +78,11 @@ const AddNewSiteForm = (props) => {
   return (
     <form onSubmit={handleSubmit}>
       <ErrorList errors={errors} />
-      <div>
-        <label htmlFor="name">Name: </label>
+
+      <div className="formDiv">
+        <label className="formLabel" htmlFor="name">Name: </label>
         <input
+        className="formField"
           name="name"
           id="name"
           type="text"
@@ -89,9 +91,10 @@ const AddNewSiteForm = (props) => {
         />
       </div>
 
-      <div>
-        <label htmlFor="url">URL: </label>
+      <div className="formDiv">
+        <label className="formLabel" htmlFor="url">URL: </label>
         <input
+        className="formField"
           name="url"
           id="url"
           type="text"
@@ -100,9 +103,10 @@ const AddNewSiteForm = (props) => {
         />
       </div>
 
-      <div>
-        <label htmlFor="imgUrl">imgUrl: </label>
+      <div className="formDiv">
+        <label className="formLabel" htmlFor="imgUrl">Image URL: </label>
         <input
+        className="formField"
           name="imgUrl"
           id="imgUrl"
           type="text"
@@ -111,9 +115,10 @@ const AddNewSiteForm = (props) => {
         />
       </div>
 
-      <div>
-        <label htmlFor="description">description: </label>
+      <div className="formDiv">
+        <label className="formLabel" htmlFor="description">Description: </label>
         <input
+          className="formField"
           name="description"
           id="description"
           type="text"
@@ -122,9 +127,14 @@ const AddNewSiteForm = (props) => {
         />
       </div>
 
-      <CategoryField handleInputChange={handleInputChange}
-        categoryId={formPayload.categoryId} />
-      <input type="submit" value="Add New Site" />
+      <div className="formDiv">
+        <CategoryField handleInputChange={handleInputChange}
+          categoryId={formPayload.categoryId} />
+      </div>
+
+      <div className="formDiv">
+        <input type="submit" value="Add New Site" />
+      </div>
 
     </form>
   )
