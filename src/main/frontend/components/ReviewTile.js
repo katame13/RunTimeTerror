@@ -6,8 +6,6 @@ const ReviewTile = (props) => {
   const { userName, review, longestRelationship, rating } = props.review;
   return (
     <div>
-      <p>Longest Relationship: {longestRelationship}</p>
-      <p>Review: {review}</p>
       <div className="review-tile">
         <div>Rating:
           <StarRatingComponent

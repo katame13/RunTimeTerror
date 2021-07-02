@@ -23,14 +23,13 @@ const SiteTile = (props) => {
           <img src={imgUrl}></img>
           <h2>{name}</h2>
         </Link>
-        {/*<h4>Average Rating: {aveRating.toPrecision(3)}</h4>*/}
-        <h4>Average Rating:
+        <h4>Average Rating: {aveRating.toPrecision(3)}</h4>
       <StarRatingComponent
         name="rate2"
         editing={false}
         starCount={5}
         value={aveRating}
-      /></h4>
+      />
         <h5>Average Relationship Length: {aveRelationship.toPrecision(
           3)} weeks</h5>
     </div>
