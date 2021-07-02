@@ -31,7 +31,7 @@ const CategoryShow = (props) =>{
 
   if(!category) {
     return(
-    <div>
+    <div className="site-tile-container-header">
       <h1>That category could not be found!</h1>
       <img src={"https://error404.fun/img/full-preview/1x/9.png"} height="100%" alt="Page Not Found" />
     </div>

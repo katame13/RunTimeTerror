@@ -62,7 +62,7 @@ const SiteShow = (props) => {
 
   if (!site) {
     return (
-      <div>
+      <div className="site-tile-container-header">
         <h1>Sorry this App/Dating Site can not be found</h1>
         <img
           src={"https://error404.fun/img/full-preview/1x/9.png"}
