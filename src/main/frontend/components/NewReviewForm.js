@@ -68,7 +68,7 @@ const NewReviewForm = (props) => {
           className="formField"
           name="rating"
           id="rating"
-          type="number"
+          type="number" min="1" max="5"
           value={formPayload.rating}
           onChange={handleInputChange}
         />
